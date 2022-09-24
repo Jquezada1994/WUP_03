@@ -17,6 +17,12 @@ davisdata <- read.csv(file="UCDavis.csv")
 ## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
 ## you choose to sit in??
 
+$H_0$ Says there is no difference in alcohol consumed between the row
+you choose to sit in.
+
+$H_A$ Says there is a difference between the alcohol consumed between the row
+you choose to sit in, there is at least two rows that are different.
+
 ## Now with ggplot - first select the basic data
 
 ```{r}
@@ -27,7 +33,9 @@ basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 ```{r}
 basicCN + geom_boxplot()
 ```
-  
+ 
+ 
+  According to the box plot data the people that sit in the back row consume more alcohol then the people seated in the middle or front row.The median of the back row is way higher.From the people that drink the least to the most the median in the back row is higher.
   
 ### get fancy  
 
@@ -36,9 +44,28 @@ basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='e
 ```
 
 ## Numerical Summarys 
+```{r}
+favstats(alcohol~Seat,data=davisdata)
+```
+The numerical results shows that people that sit in the back row drink about 9.625000 drinks in the back row.
+In the front row is about 1.803030 and the middle row is about 3.283133.
+
 
 ## Inferential Tests
 
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
+
+we received a low p value i have to follow up with TukeyHSD to find out whats going on.
+
+```{r}
+plot(TukeyHSD(model1))
+```
+
+
+When we take people from the back row and the people from the front row we get a negative number when subtracted.That shows the back row is drinking more then the front row.Middle back has a difference as well we take the -11 and -4 on the plot and the difference is negative, which shows there is a difference.The middle front has no difference between the middle and the front because it hits the 0 line its a 95% confidence level and it passes the line which shows no difference between the two.
 ## Conclusions
 
 
