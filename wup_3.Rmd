@@ -68,4 +68,6 @@ plot(TukeyHSD(model1))
 When we take people from the back row and the people from the front row we get a negative number when subtracted.That shows the back row is drinking more then the front row.Middle back has a difference as well we take the -11 and -4 on the plot and the difference is negative, which shows there is a difference.The middle front has no difference between the middle and the front because it hits the 0 line its a 95% confidence level and it passes the line which shows no difference between the two.
 ## Conclusions
 
+When asked if there a difference between the alcohol consumed between the row
+you choose to sit in I ran tests to see if its true or not.We ran an inferential test.The T test causes us to reject the $H_O$ the p value 0.000116 it is less than 0.05 which means we reject th $H_0$.The people in the back seat most likely drink more compared to the front and middle rows according to the results in the data.The $H_A$ is correct there is a difference on consumption in alcohol.
 
